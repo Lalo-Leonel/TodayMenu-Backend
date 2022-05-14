@@ -13,6 +13,7 @@ const cors = require("cors");
 const morgan = require("morgan");
 const usersRouter = require("./routes/users");
 const authsRouter = require("./routes/auth");
+const menusRouter = require("./routes/menus");
 
 const app = express();
 
@@ -26,5 +27,6 @@ app.get("/", (req, res) => {
 
 app.use("/api/users", usersRouter);
 app.use("/auth", authsRouter);
+app.use("/api/menus", menusRouter);
 
 module.exports = { app };
