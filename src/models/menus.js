@@ -1,5 +1,22 @@
 const { Schema, model } = require("mongoose");
 
+const nameFood = new Schema(
+  {
+    name: {
+      type: String,
+      required: [true, "the name of the food is required"]
+    },
+    available:{
+      type: Boolean,
+      default: true,
+    },
+    quantity: {
+      type: Number,
+      default: 0
+    }
+  }
+)
+
 const menusSchema = new Schema(
   {
     typeMenu: {
@@ -18,7 +35,8 @@ const menusSchema = new Schema(
       type: [String],
     },
     secondNames: {
-      type: [String],
+      type: [nameFood],
+      default: {}
     },
     user: {
       type: Schema.Types.ObjectId,
