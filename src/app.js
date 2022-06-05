@@ -14,6 +14,8 @@ const morgan = require("morgan");
 const usersRouter = require("./routes/users");
 const authsRouter = require("./routes/auth");
 const menusRouter = require("./routes/menus");
+const requestsRouter = require("./routes/requests");
+const businessRouter = require("./routes/business");
 
 const app = express();
 
@@ -28,5 +30,7 @@ app.get("/", (req, res) => {
 app.use("/api/users", usersRouter);
 app.use("/auth", authsRouter);
 app.use("/api/menus", menusRouter);
+app.use("/api/requests", requestsRouter);
+app.use("/api/business", businessRouter);
 
 module.exports = { app };

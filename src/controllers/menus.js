@@ -8,10 +8,7 @@ exports.create = async (req, res) => {
     if (!user) {
       throw new Error("invalid user");
     }
-    if (user.role === "client") {
-      throw new Error("client cannot create a menu");
-    }
-    const menu = await Menu.create({ ...body, user: userId });
+    const menu = await Menu.create(body);
     res.status(201).json({ message: "menu created", menu });
   } catch (error) {
     res.status(400).json({ message: error.message });
@@ -20,7 +17,7 @@ exports.create = async (req, res) => {
 
 exports.list = async (req, res) => {
   try {
-    const menus = await Menu.find();
+    const menus = await Menu.find().populate("business");
     res.status(200).json({ message: `${menus.length} items found`, menus });
   } catch (error) {
     res.status(500).json({ message: "Something went wrong" });

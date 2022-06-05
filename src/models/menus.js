@@ -38,9 +38,9 @@ const menusSchema = new Schema(
       type: [nameFood],
       default: {}
     },
-    user: {
+    business: {
       type: Schema.Types.ObjectId,
-      ref: "User",
+      ref: "Business",
       required: true,
     },
   },
